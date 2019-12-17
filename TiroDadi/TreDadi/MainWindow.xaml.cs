@@ -36,22 +36,31 @@ namespace TreDadi
             //primo tiro
             Task lancio1 = Task.Factory.StartNew(() =>
             {
-                faccia1= tiro.Next(1, 7); ;
+                faccia1 = Tiro();
             });
 
             //secondo tiro
             Task lancio2 = Task.Factory.StartNew(() =>
             {
-                faccia2 = tiro.Next(1, 7); 
+                faccia2 = Tiro();
             });
 
             //attesa
             Task.WaitAll(lancio1, lancio2);
-            img_dado1.Source = new BitmapImage(new Uri($"C:/Users/studenti/source/repos/TiroDadi/TiroDadi/TreDadi/dado_{faccia1}.jpg"));
-            img_dado2.Source = new BitmapImage(new Uri($"C:/Users/studenti/source/repos/TiroDadi/TiroDadi/TreDadi/dado_{faccia2}.jpg"));
+            img_dado2.Source = new BitmapImage(new Uri($"C:/Users/iurif/Source/Repos/TiroDadi/TiroDadi/TreDadi/dado_{faccia2}.jpg"));
+            img_dado1.Source = new BitmapImage(new Uri($"C:/Users/iurif/Source/Repos/TiroDadi/TiroDadi/TreDadi/dado_{faccia1}.jpg"));
 
             //calcolo somma
-            lbl_somma.Content = faccia1 + faccia2;
+            Task somma = Task.Factory.StartNew(() =>
+            {
+                int s= faccia1 + faccia2;
+                Dispatcher.Invoke(() => { lbl_somma.Content = s; }) ;
+            });
+        }
+
+        private int Tiro()
+        {
+            return tiro.Next(1, 7); 
         }
     }
 }
