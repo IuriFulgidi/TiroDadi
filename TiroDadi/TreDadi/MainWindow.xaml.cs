@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,12 +29,25 @@ namespace TreDadi
 
         private void Btn_tira_Click(object sender, RoutedEventArgs e)
         {
+            //variabili
+            int faccia1 = 0;
+            int faccia2 = 0;
+
             //primo tiro
-            int faccia1= tiro.Next(1, 7); ;
-            img_dado1.Source = new BitmapImage(new Uri($"C:/Users/studenti/source/repos/TiroDadi/TiroDadi/TreDadi/dado_{faccia1}.jpg"));
+            Task lancio1 = Task.Factory.StartNew(() =>
+            {
+                faccia1= tiro.Next(1, 7); ;
+            });
 
             //secondo tiro
-            int faccia2 = tiro.Next(1, 7); ;
+            Task lancio2 = Task.Factory.StartNew(() =>
+            {
+                faccia2 = tiro.Next(1, 7); 
+            });
+
+            //attesa
+            Task.WaitAll(lancio1, lancio2);
+            img_dado1.Source = new BitmapImage(new Uri($"C:/Users/studenti/source/repos/TiroDadi/TiroDadi/TreDadi/dado_{faccia1}.jpg"));
             img_dado2.Source = new BitmapImage(new Uri($"C:/Users/studenti/source/repos/TiroDadi/TiroDadi/TreDadi/dado_{faccia2}.jpg"));
 
             //calcolo somma
