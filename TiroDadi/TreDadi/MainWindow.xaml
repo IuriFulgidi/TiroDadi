@@ -7,9 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="498.997" Width="415.759">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="casino.png" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Image x:Name="img_dado1" HorizontalAlignment="Left" Height="100" Margin="72,73,0,0" VerticalAlignment="Top" Width="100"/>
         <Image x:Name="img_dado2" HorizontalAlignment="Left" Height="100" Margin="251,73,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="btn_tira" Content="Tira i dadi" HorizontalAlignment="Left" Margin="72,216,0,0" VerticalAlignment="Top" Width="279" Height="100" FontSize="36" FontFamily="Sitka Small"/>
-        <Label x:Name="lbl_somma" Content="Somma" HorizontalAlignment="Left" Margin="145,365,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <Button x:Name="btn_tira" Content="Tira i dadi" HorizontalAlignment="Left" Margin="72,216,0,0" VerticalAlignment="Top" Width="279" Height="100" FontSize="36" FontFamily="Sitka Small" Click="Btn_tira_Click"/>
+        <Label x:Name="lbl_somma" Content="0" HorizontalAlignment="Left" Margin="196,366,0,0" VerticalAlignment="Top" FontSize="36" Background="#FF00FF23"/>
     </Grid>
 </Window>

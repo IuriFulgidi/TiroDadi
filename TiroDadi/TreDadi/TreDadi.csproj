@@ -112,5 +112,8 @@
   <ItemGroup>
     <Resource Include="dado_6.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="casino.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
